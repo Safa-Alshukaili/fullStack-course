@@ -9,7 +9,7 @@ export const savePost = createAsyncThunk(
   "posts/savePost",
   async (postData, { rejectWithValue }) => {
     try {
-      const res = await axios.post("https://fullstack-server-pild.onrender.com/savePost", {
+      const res = await axios.post("https://fullstack-course-server-k2pj.onrender.com/savePost", {
         postMsg: postData.postMsg,
         email: postData.email,
       });
@@ -25,7 +25,7 @@ export const getPosts = createAsyncThunk(
   "posts/getPosts",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await axios.get("https://fullstack-server-pild.onrender.com/getPosts");
+      const res = await axios.get("https://fullstack-course-server-k2pj.onrender.com/getPosts");
       return res.data.posts;
     } catch (err) {
       return rejectWithValue(err.response?.data || { error: "Fetch failed" });
@@ -39,7 +39,7 @@ export const likePost = createAsyncThunk(
   async (postData, { rejectWithValue }) => {
     try {
       const res = await axios.put(
-        `https://fullstack-server-pild.onrender.com/likePost/${postData.postId}`,
+        `https://fullstack-course-server-k2pj.onrender.com/likePost/${postData.postId}`,
         {
           userId: postData.userId, // هنا نرسل الإيميل
         }
