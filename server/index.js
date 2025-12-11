@@ -18,10 +18,11 @@ app.use(cors());
 // ========= اتصال قاعدة البيانات =========
 const connectString = `mongodb+srv://admin:admin123@postitcluster.olvjwxq.mongodb.net/postITDb?appName=PostITCluster`;
 
-mongoose.connect(connectString, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+
+mongoose
+  .connect(connectString)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
 // ========= إعداد __dirname و static للصور =========
 const __filename = fileURLToPath(import.meta.url);
