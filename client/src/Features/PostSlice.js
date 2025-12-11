@@ -9,7 +9,7 @@ export const savePost = createAsyncThunk(
   "posts/savePost",
   async (postData, { rejectWithValue }) => {
     try {
-      const res = await axios.post("http://localhost:3001/savePost", {
+      const res = await axios.post("https://fullstack-server-pild.onrender.com/savePost", {
         postMsg: postData.postMsg,
         email: postData.email,
       });
@@ -25,7 +25,7 @@ export const getPosts = createAsyncThunk(
   "posts/getPosts",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await axios.get("http://localhost:3001/getPosts");
+      const res = await axios.get("https://fullstack-server-pild.onrender.com/getPosts");
       return res.data.posts;
     } catch (err) {
       return rejectWithValue(err.response?.data || { error: "Fetch failed" });
@@ -39,7 +39,7 @@ export const likePost = createAsyncThunk(
   async (postData, { rejectWithValue }) => {
     try {
       const res = await axios.put(
-        `http://localhost:3001/likePost/${postData.postId}`,
+        `https://fullstack-server-pild.onrender.com/likePost/${postData.postId}`,
         {
           userId: postData.userId, // هنا نرسل الإيميل
         }
