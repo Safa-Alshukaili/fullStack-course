@@ -14,7 +14,7 @@ export const registerUser = createAsyncThunk(
   "users/registerUser",
   async (data, { rejectWithValue }) => {
     try {
-      const res = await axios.post("http://localhost:3001/registerUser", data);
+      const res = await axios.post("https://fullstack-server-pild.onrender.com/registerUser", data);
       return res.data.user;
     } catch (err) {
       return rejectWithValue(err.response?.data || { error: "Register failed" });
@@ -27,7 +27,7 @@ export const login = createAsyncThunk(
   "users/login",
   async (data, { rejectWithValue }) => {
     try {
-      const res = await axios.post("http://localhost:3001/login", data);
+      const res = await axios.post("https://fullstack-server-pild.onrender.com/login", data);
       return res.data.user;
     } catch (err) {
       const msg = err.response?.data?.error || "Invalid credentials";
@@ -39,7 +39,7 @@ export const login = createAsyncThunk(
 
 // ✅ تسجيل خروج
 export const logout = createAsyncThunk("users/logout", async () => {
-  await axios.post("http://localhost:3001/logout");
+  await axios.post("https://fullstack-server-pild.onrender.com/logout");
 });
 
 // ✅ تحديث البروفايل (مع صورة)
